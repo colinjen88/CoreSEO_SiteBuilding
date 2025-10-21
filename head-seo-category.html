@@ -1,0 +1,106 @@
+<!-- ::: 商品列表頁-Head 最佳化標記（SEO/OG社群/效能/Schema） ::: -->
+
+<!-- 基本 Meta 標籤
+  目的：SEO 基礎（字元編碼、RWD、標題與頁面摘要）
+  維護：title/description 請依實際類別頁調整；描述建議 120–160 字元，含關鍵賣點與長尾詞。
+  索引：robots 已允許索引並開啟大圖預覽，利於豐富摘要與 AI 摘要。
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黃金買賣與金條商品清單 | NotARealName黃金白銀交易所</title>
+<meta name="description" content="沒有這一間黃金買賣專區，提供多樣化高品質金條、金幣與黃金禮品。台灣現貨，透明報價，支援門市取貨。">
+<meta name="robots" content="index, follow, max-snippet:200, max-image-preview:large">
+
+<!-- AI 搜尋/索引補充
+  referrer：在跨網域載入（圖片、資源）時提供合理的 Referer 政策，避免阻擋預覽。-->
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<!-- 連線優化（Preconnect）
+  目的：提早建立與關鍵網域的 TCP/TLS，縮短首屏等待時間。-->
+<link rel="preconnect" href="https://sub.NotARealName.com.tw" />
+<!-- 目前的網站有很多資源來自www.NotARealName.com.tw, 所以需要加這串 -->
+<link rel="preconnect" href="https://www.NotARealName.com.tw" />
+
+<!-- Canonical（正規網址）
+  目的：避免重複內容稀釋排名，請指向此類別頁最終 URL（含參數策略）。-->
+<link rel="canonical" href="https://sub.NotARealName.com.tw/category/gold-bars" />
+<meta name="author" content="沒有這一間有限公司">
+
+<!-- Open Graph（社群分享預覽）
+  類別頁：使用 og:type=website；如有專屬橫幅圖可補 og:image。-->
+<meta property="og:site_name" content="NotARealName黃金白銀交易所">
+<meta property="og:title" content="黃金買賣與金條商品清單 - NotARealName黃金白銀交易所">
+<meta property="og:url" content="https://sub.NotARealName.com.tw/category/gold-bars">
+<meta property="og:type" content="website">
+<meta property="og:description" content="沒有這一間黃金買賣專區，提供多樣化高品質金條、金幣與黃金禮品。台灣現貨，透明報價，支援門市取貨。">
+<meta property="og:locale" content="zh_TW">
+
+<!-- 結構化資料 (Structured Data) 協助搜尋引擎更了解網頁內容，提升搜尋結果的顯示效果 (Rich Snippet)，進而增加點擊率 (CTR)。 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "台灣黃金買賣與金條商品清單",
+  "description": "沒有這一間黃金買賣專區，提供多樣化高品質金條、金幣與黃金禮品。",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "url": "https://sub.NotARealName.com.tw/product/gold-bar-1kg"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "url": "https://sub.NotARealName.com.tw/product/gold-coin-maple"
+      }
+      // ...放該頁所有商品項目
+    ]
+  }
+}
+</script>
+
+<!-- 結構化資料：CollectionPage（類別/清單頁）
+  用途：向搜尋/AI 說明此頁為商品清單，主體為 ItemList，有助於理解頁面語意。
+  維護：itemListElement 請以實際商品動態輸出（以 position 排序，url 指向商品頁）。-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "台灣黃金買賣與金條商品清單",
+  "description": "沒有這一間黃金買賣專區，提供多樣化高品質金條、金幣與黃金禮品。",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "url": "https://sub.NotARealName.com.tw/product/gold-bar-1kg" },
+      { "@type": "ListItem", "position": 2, "url": "https://sub.NotARealName.com.tw/product/gold-coin-maple" }
+      // ...放該頁所有商品項目
+    ]
+  }
+}
+</script>
+
+<!-- 結構化資料：BreadcrumbList（麵包屑）
+  用途：於搜尋結果顯示階層路徑，提升可讀性與點擊率。
+  維護：依實際導覽架構與類別調整名稱與連結。 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "首頁",
+      "item": "https://sub.NotARealName.com.tw/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "黃金買賣",
+      "item": "https://sub.NotARealName.com.tw/category/gold-bars"
+    }
+  ]
+}
+</script>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電商網站語意化結構範例</title>
+    <style>
+        /* 需要配置h1~h3，但又不希望它們在頁面上顯示時，可以設置visually-hidden來隱藏它們，同時保持可訪問性：*/
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ========== 網站標頭區域 ========== -->
+    <header>
+        <div>
+            <!-- Logo品牌區域 -->
+            <div>
+                <a href="/" aria-label="首頁">
+                    <img src="/images/logo.png" alt="NotThing黃金白銀交易所">
+                </a>
+            </div>
+
+            <!-- 主要導覽選單 -->
+            <nav aria-label="主要導覽">
+                <ul>
+                    <li><a href="/category1">主選項1</a></li>
+                    <li><a href="/category2">主選項2</a></li>
+                    <li><a href="/category3">主選項3</a></li>
+                    <li><a href="/category4">主選項4</a></li>
+                    <li><a href="/category5">主選項5</a></li>
+                </ul>
+            </nav>
+
+            <!-- 搜尋功能 -->
+            <div>
+                <form role="search">
+                    <input type="search" placeholder="搜尋商品" aria-label="搜尋商品">
+                    <button type="submit" aria-label="執行搜尋">搜尋</button>
+                </form>
+            </div>
+
+            <!-- 會員功能導覽 -->
+            <nav aria-label="會員功能">
+                <ul>
+                    <li><a href="/login">登入</a></li>
+                    <li><a href="/cart">購物車</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- 即時價格資訊區 -->
+        <section aria-label="即時價格">
+            <h2>貴金屬即時價格</h2>
+        </section>
+    </header>
+
+    <!-- ========== 側邊欄篩選區域 ========== -->
+    <!-- aside: 主要內容的輔助區域，通常用於篩選、廣告、相關連結等 -->
+    <aside aria-label="商品篩選">
+        <!-- 篩選表單區域 -->
+        <section>
+            <h2>篩選商品</h2>
+            <form>
+                <!-- fieldset + legend: 將相關表單欄位分組，提升無障礙性 -->
+                <fieldset>
+                    <legend>價格範圍</legend>
+                    <label for="price-min">最低價格</label>
+                    <input type="number" id="price-min" name="price-min">
+                    <label for="price-max">最高價格</label>
+                    <input type="number" id="price-max" name="price-max">
+                </fieldset>
+                <fieldset>
+                    <legend>商品類型</legend>
+                    <label><input type="checkbox" value="gold"> 黃金</label>
+                    <label><input type="checkbox" value="silver"> 白銀</label>
+                </fieldset>
+                <button type="submit">套用篩選</button>
+            </form>
+        </section>
+
+        <!-- 分類導覽區域 -->
+        <nav aria-label="商品分類">
+            <h2>商品分類</h2>
+            <ul>
+                <li><a href="/category/gold-bars">金條</a></li>
+                <li><a href="/category/gold-coins">金幣</a></li>
+                <li><a href="/category/silver-bars">銀條</a></li>
+                <li><a href="/category/silver-coins">銀幣</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- ========== 主要內容區域 ========== -->
+    <!-- main: 頁面的主要內容，每頁只能有一個 -->
+    <main>
+        <!-- H1主標題：SEO最重要的標題，使用visually-hidden保持語意但不顯示 -->
+        <h1 class="visually-hidden">商品目錄</h1>
+
+        <!-- 麵包屑導覽：幫助使用者了解當前位置 -->
+        <nav aria-label="breadcrumb">
+            <ol>
+                <li><a href="/">首頁</a></li>
+                <li><a href="/category">分類</a></li>
+                <li aria-current="page">目前頁面</li>
+            </ol>
+        </nav>
+
+        <!-- 商品列表主要區域 -->
+        <section aria-label="商品列表">
+            <h2 class="visually-hidden">商品列表</h2>
+
+            <!-- 排序功能 -->
+            <div>
+                <label for="sort-select">排序方式：</label>
+                <select id="sort-select" name="sort">
+                    <option value="price-asc">價格：低到高</option>
+                    <option value="price-desc">價格：高到低</option>
+                    <option value="newest">最新上架</option>
+                </select>
+            </div>
+
+            <!-- 商品清單 -->
+            <ul>
+                <li>
+                    <!-- article: 獨立的內容單元，每個商品都是一個article -->
+                    <!-- Schema.org結構化資料：幫助搜尋引擎理解商品資訊 -->
+                    <article itemscope itemtype="https://schema.org/Product">
+                        <img src="/images/product1.jpg" alt="龍年紀念金幣" itemprop="image">
+
+                        <!-- H3商品標題：SEO次要標題，包含產品連結 -->
+                        <h3 itemprop="name">
+                            <a href="/product/dragon-gold-coin">龍年紀念金幣 1盎司</a>
+                        </h3>
+
+                        <!-- 價格資訊：結構化資料標記 -->
+                        <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                            <span itemprop="price" content="85000">NT$ 85,000</span>
+                            <meta itemprop="priceCurrency" content="TWD">
+                            <meta itemprop="availability" content="https://schema.org/InStock">
+                        </div>
+
+                        <!-- 評價資訊：結構化資料標記 -->
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <span aria-label="評分 4.8 分">★★★★★</span>
+                            <span>(<span itemprop="ratingValue">4.8</span>) <span
+                                    itemprop="reviewCount">128</span>則評價</span>
+                        </div>
+
+                        <!-- 商品描述 -->
+                        <p itemprop="description">限量發行龍年紀念金幣，純金99.9%</p>
+
+                        <!-- 操作按鈕 -->
+                        <div>
+                            <button type="button" aria-label="加入購物車">加入購物車</button>
+                            <button type="button" aria-label="加入收藏">收藏</button>
+                        </div>
+                    </article>
+                </li>
+
+                <li>
+                    <article itemscope itemtype="https://schema.org/Product">
+                        <img src="/images/product2.jpg" alt="楓葉銀幣" itemprop="image">
+
+                        <h3 itemprop="name">
+                            <a href="/product/maple-silver-coin">加拿大楓葉銀幣 1盎司</a>
+                        </h3>
+
+                        <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                            <span itemprop="price" content="1200">NT$ 1,200</span>
+                            <meta itemprop="priceCurrency" content="TWD">
+                            <meta itemprop="availability" content="https://schema.org/InStock">
+                        </div>
+
+                        <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                            <span aria-label="評分 4.9 分">★★★★★</span>
+                            <span>(<span itemprop="ratingValue">4.9</span>) <span
+                                    itemprop="reviewCount">89</span>則評價</span>
+                        </div>
+
+                        <p itemprop="description">加拿大皇家鑄幣廠發行，純銀99.99%</p>
+
+                        <div>
+                            <button type="button" aria-label="加入購物車">加入購物車</button>
+                            <button type="button" aria-label="加入收藏">收藏</button>
+                        </div>
+                    </article>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 分頁導覽 -->
+        <nav aria-label="分頁導覽">
+            <ul>
+                <li><a href="?page=2" aria-label="上一頁">← 上一頁</a></li>
+                <li><a href="?page=1" aria-label="第 1 頁">1</a></li>
+                <li><a href="?page=2" aria-label="第 2 頁">2</a></li>
+                <li><span aria-current="page" aria-label="目前頁面">3</span></li>
+                <li><a href="?page=4" aria-label="第 4 頁">4</a></li>
+                <li><a href="?page=5" aria-label="第 5 頁">5</a></li>
+                <li><a href="?page=4" aria-label="下一頁">下一頁 →</a></li>
+            </ul>
+            <!-- aria-live: 動態內容更新時通知螢幕閱讀器 -->
+            <div aria-live="polite">顯示第 21-30 項，共 150 項商品</div>
+        </nav>
+    </main>
+
+    <!-- ========== 網站頁尾區域 ========== -->
+    <!-- footer: 網站頁尾，包含公司資訊、聯絡方式、法律資訊等 -->
+    <footer>
+        <!-- 公司品牌資訊區域 -->
+        <section aria-label="公司資訊">
+            <a href="/">
+                <img src="/images/logo.png" alt="NotThing黃金白銀交易所">
+            </a>
+
+            <!-- 特色理念展示 -->
+            <div>
+                <h2 class="visually-hidden">特色理念</h2>
+                <ul>
+                    <li><a href="/feature1"><img src="/images/concept1.png" alt="同步國際商品"></a></li>
+                    <li><a href="/feature2"><img src="/images/concept2.png" alt="即時價格公開"></a></li>
+                    <li><a href="/feature3"><img src="/images/concept3.png" alt="多元服務方便"></a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 社群媒體連結 -->
+        <nav aria-label="社群媒體">
+            <ul>
+                <li><a href="https://facebook.com/example" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+                </li>
+                <li><a href="https://instagram.com/example" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                </li>
+                <li><a href="https://line.me/example" target="_blank" rel="noopener" aria-label="LINE">LINE</a></li>
+            </ul>
+        </nav>
+
+        <!-- 聯絡資訊：使用address標籤標示聯絡方式 -->
+        <section aria-label="聯絡我們">
+            <h2>聯絡我們</h2>
+            <address>
+                服務電話：<a href="tel:+88661234567">06-123-4567</a><br>
+                客服信箱：<a href="mailto:service@example.com">service@example.com</a>
+            </address>
+        </section>
+
+        <!-- 實體門市資訊 -->
+        <section aria-label="門市資訊">
+            <h2>實體門市</h2>
+            <div>
+                <h3>台北門市</h3>
+                <address>
+                    電話：<a href="tel:+886200000000">(02) 0000-0000</a><br>
+                    地址：台北市中正區一二三街123號
+                </address>
+            </div>
+            <div>
+                <h3>台南門市</h3>
+                <address>
+                    電話：<a href="tel:+88660000000">(06) 000-0000</a><br>
+                    地址：台南市零零路一段000號
+                </address>
+            </div>
+        </section>
+    </footer>
+</body>
+
+</html>
