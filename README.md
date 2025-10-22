@@ -1,5 +1,3 @@
-# 電商網站 SEO 優化標準模板
-
 > 適用於購物網站的商品頁面和商品列表頁面的 SEO 最佳化實作範例
 
 ## 📋 目錄
@@ -30,12 +28,19 @@
 ## 📁 檔案結構
 
 ```
-📦 SEO優化模板
-├── 📄 head-seo-category.html    # 商品列表頁 SEO 模板
-├── 📄 head-seo-product.html     # 商品詳情頁 SEO 模板
-├── 📄 README.md                 # 本說明文件
-└── 📄 SEO-CHECKLIST.md         # SEO 檢查清單（建議新增）
+📦 seo-optimized-ecommerce-html-structure
+├── head-seo-category.html         # 商品列表頁 SEO 模板
+├── head-seo-product.html          # 商品詳情頁 SEO 模板
+├── semantic-html-structure.html   # 電商語意結構範例
+├── html-semantic-guide.md         # HTML 語意標籤教學
+├── structure-analysis.md          # 結構分析說明
+├── semantic-structure-guide.md    # 語意結構指引
+├── seo-checklist.md               # SEO 檢查清單
+├── subdomain-test-robots-security.md # 測試站防收錄與資安攻略
+├── readme.md                      # 本說明文件
 ```
+
+> 另有 `subdomain-test-robots-security.md`，提供測試站防收錄與資安曝光全攻略，建議測試/子域站務必參考。
 
 ## 🔧 SEO 優化要素
 
@@ -261,3 +266,36 @@
 ---
 
 **⭐ 如果這個 SEO 模板對您有幫助，請給個星星支持！**
+---
+
+## 🚀 AI搜尋風口強化建議與提醒
+
+隨著 Google SGE、Bard、ChatGPT、Bing AI 等新型搜尋引擎崛起，建議電商SEO架構可再加強以下重點：
+
+### 1. 結構化資料 Schema 多元化
+- 除了 Product、CollectionPage、BreadcrumbList，建議補充 FAQPage、HowTo、Review、Organization、Event 等 Schema，讓 AI 更容易理解並直接在搜尋結果中呈現答案。
+
+### 2. FAQ 與知識型內容
+- 增加常見問題（FAQ）、教學、比較、選購指南等內容，並用 FAQPage Schema 標記，提升 AI 直接回答的機率。
+
+### 3. E-E-A-T 與原創權威性
+- 強化 E-E-A-T（Experience, Expertise, Authoritativeness, Trustworthiness）原則，明確標示作者、專業背景、資料來源，提升 AI 引用率。
+
+### 4. 多語言與地區 Schema
+- 若有跨國或多語言需求，補充 hreflang 標籤與多語言 Schema，讓 AI 能精準分發內容。
+
+### 5. 多媒體資料 Schema
+- 圖片補充 alt、caption、ImageObject Schema，影音內容用 VideoObject Schema，表格可用 DataTable Schema。
+
+### 6. AI摘要與大圖預覽
+- meta robots 設定 `max-image-preview:large`，主要內容區塊提供精簡摘要，利於 AI 生成豐富摘要。
+
+### 7. 持續追蹤 AI 搜尋結果
+- 定期用 Google SGE、Bing AI、ChatGPT 搜尋品牌與商品，觀察 AI 回答內容，並根據結果調整網頁結構與內容。
+
+### 8. AI搜尋專屬頁面
+- 可設計「AI問答專區」或「快速知識摘要」頁面，方便 AI 抓取精華內容。
+
+## 🛡️ 測試站防收錄與資安
+請參考 [subdomain-test-robots-security.md](./subdomain-test-robots-security.md) 文件，了解如何防止測試站被搜尋引擎收錄，以及資安曝露的預防與應對措施。
+
